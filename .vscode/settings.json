@@ -16,5 +16,6 @@
         "css.mozProperties": "",
         "css.oProperties": "null",
         "css.msProperties": "null"
-      }
+    },
+    "liveServer.settings.multiRootWorkspaceName": "blog"
 }

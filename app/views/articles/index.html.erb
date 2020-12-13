@@ -1,9 +1,9 @@
 <h1>Listing articles</h1>
-
+<%= link_to 'New Article', new_article_path %>
 <table>
     <tr>
         <th>Title</th>
-        <th>Title</th>
+        <th>Text</th>
         <th></th>
     </tr>
     <% @articles.each do |article|%>
@@ -16,6 +16,9 @@
         </td>
         <td>
             <%= link_to  "show", article_path(article) %>
+        </td>
+        <td>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
         </td>
     </tr>
     <%end%>
