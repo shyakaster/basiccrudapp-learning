@@ -1,10 +1,36 @@
-<%= link_to 'Edit', edit_article_path(@article) %>
-<p>
-    <strong>Title:</strong>
-    <%= @article.title %>
-</p>
-<p>
-    <strong>Text:</strong>
-    <%= @article.text %>
-</p>
-<%= link_to 'Back', articles_path %>
+<h1><%= @article.title%></h1>
+
+<p><%= @article.text%></p>
+
+<ul>
+    <li><%= link_to 'Edit', edit_article_path(@article) %></li>
+    <li><%= link_to 'Delete', article_path(@article), 
+                    method: :delete, data: {confirm: "Are you sure?"} %></li>
+</ul>
+<h2> Comments</h2>
+<% @article.comments.each do |comment|%>
+    <p>
+        <strong>Commenter:</strong>
+        <%= comment.commenter %>
+    </p>
+    <p>
+        <strong>Comment:</strong>
+        <%= comment.body%>
+    </p>
+<%end%>
+
+<h2>Add comment</h2>
+<%= form_with model: [@article, @article.comments.build] do | form|%>
+    <p>
+        <%=form.label :commenter%>
+        <%=form.text_field :commenter%>
+    </p>
+    <p>
+        <%=form.label :body%>
+        <%=form.text_field :body%>
+    </p>
+    <p>
+        <%=form.submit%>
+    </p>
+   
+<%end%>
